@@ -27,6 +27,7 @@ c.headers = headers
 
 proc sendPayload(client: HttpClient, msg: string = ""): JsonNode  =
   try:
+    client.headers.add("x-msg", msg)
     var content = client.getContent("https://httpbin.org/headers")
     result = parseJson(content)
     return
@@ -40,3 +41,4 @@ var data = c.sendPayload("Hello World")["headers"]
 echo "HTTPBIN - Headers Data" & " "  & $(len(data)) & "\n"
 for k,v in pairs(data):
   echo $(k) & " >>> " & $(v)
+
