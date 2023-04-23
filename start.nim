@@ -1,6 +1,4 @@
-import std/httpclient
-import std/json
-
+import std / [json, httpclient] 
 
 var defaultSpeed {.used.} :float = 10.55
 
